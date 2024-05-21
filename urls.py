@@ -1,23 +1,23 @@
-from django.urls import re_path as url
-from .views import *
+"""
+URL configuration for inventory_management project.
+
+The `urlpatterns` list routes URLs to views. For more information please see:
+    https://docs.djangoproject.com/en/5.0/topics/http/urls/
+Examples:
+Function views
+    1. Add an import:  from my_app import views
+    2. Add a URL to urlpatterns:  path('', views.home, name='home')
+Class-based views
+    1. Add an import:  from other_app.views import Home
+    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
+Including another URLconf
+    1. Import the include() function: from django.urls import include, path
+    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
+"""
+from django.contrib import admin
+from django.urls import path, include
 
 urlpatterns = [
-
-   url(r'^$', index, name='index'),
-   
-   url(r'^display_laptops$', display_laptops, name='display_laptops'),
-   url(r'^display_desktops$', display_desktops, name='display_desktops'),
-   url(r'^display_mobiles$', display_mobiles, name='display_mobiles'),
-
-   url(r'^add_laptop$', add_laptop, name='add_laptop'),
-   url(r'^add_desktop$', add_desktop, name='add_desktop'),
-   url(r'^add_mobile$', add_mobile, name='add_mobile'),
-
-   url(r'^edit_laptop/(?P<pk>\d+)$', edit_laptop, name='edit_laptop'),
-   url(r'^edit_desktop/(?P<pk>\d+)$', edit_desktop, name='edit_desktop'),
-   url(r'^edit_mobile/(?P<pk>\d+)$', edit_mobile, name='edit_mobile'),
-
-   url(r'^delete_laptop/(?P<pk>\d+)$', delete_laptop, name='delete_laptop'),
-   url(r'^delete_desktop/(?P<pk>\d+)$', delete_desktop, name='delete_desktop'),
-   url(r'^delete_mobile/(?P<pk>\d+)$', delete_mobile, name='delete_mobile'),
+    path('admin/', admin.site.urls),
+    path('', include('inventory.urls'))
 ]
